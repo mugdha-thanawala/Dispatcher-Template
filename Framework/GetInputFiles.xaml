@@ -95,15 +95,15 @@
       <AssemblyReference>System.Linq.Queryable</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="get_input_files" sap:VirtualizedContainerService.HintSize="915.9999999999999,2398" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="get_input_files" sap:VirtualizedContainerService.HintSize="1129.6000000000001,1525.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <TryCatch DisplayName="Try Catch - get input files" sap:VirtualizedContainerService.HintSize="664.6666666666666,2375.3333333333335" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch DisplayName="Try Catch - get input files" sap:VirtualizedContainerService.HintSize="664,1502.4" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <TryCatch.Try>
-        <Sequence sap:VirtualizedContainerService.HintSize="626,2090" sap2010:WorkflowViewState.IdRef="Sequence_2">
+        <Sequence sap:VirtualizedContainerService.HintSize="627.2,1224.8" sap2010:WorkflowViewState.IdRef="Sequence_2">
           <Sequence.Variables>
             <Variable x:TypeArguments="s:String[]" Name="inputSourcesArr" />
           </Sequence.Variables>
@@ -112,7 +112,7 @@
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:MultipleAssign DisplayName="Multiple Assign - input sources list" sap:VirtualizedContainerService.HintSize="592,149.33333333333334" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+          <ui:MultipleAssign DisplayName="Multiple Assign - input sources list" sap:VirtualizedContainerService.HintSize="564,149.6" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
             <ui:MultipleAssign.AssignOperations>
               <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
                 <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
@@ -126,13 +126,13 @@
               </scg:List>
             </ui:MultipleAssign.AssignOperations>
           </ui:MultipleAssign>
-          <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each - input source" sap:VirtualizedContainerService.HintSize="592,1345.3333333333333" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[inputSourcesArr]">
+          <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each - input source" sap:VirtualizedContainerService.HintSize="564,630.4" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[inputSourcesArr]">
             <ui:ForEach.Body>
               <ActivityAction x:TypeArguments="x:String">
                 <ActivityAction.Argument>
                   <DelegateInArgument x:TypeArguments="x:String" Name="currentInputSource" />
                 </ActivityAction.Argument>
-                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="558,1197.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="530.4,484" sap2010:WorkflowViewState.IdRef="Sequence_3">
                   <Sequence.Variables>
                     <Variable x:TypeArguments="x:String" Name="sharepointFileURL" />
                   </Sequence.Variables>
@@ -141,23 +141,24 @@
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <Switch x:TypeArguments="x:String" DisplayName="Switch" Expression="[currentInputSource.ToUpper]" sap:VirtualizedContainerService.HintSize="524,1137.3333333333333" sap2010:WorkflowViewState.IdRef="Switch`1_2">
-                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="EMAIL" sap:VirtualizedContainerService.HintSize="456.6666666666667,145.33333333333334" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Utilities\GetEmailInputFiles.xaml">
+                  <Switch x:TypeArguments="x:String" DisplayName="Switch" Expression="[currentInputSource.ToUpper]" sap:VirtualizedContainerService.HintSize="496.8,424" sap2010:WorkflowViewState.IdRef="Switch`1_2">
+                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="EMAIL" sap:VirtualizedContainerService.HintSize="456.8,144" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Utilities\GetEmailInputFiles.xaml">
                       <ui:InvokeWorkflowFile.Arguments>
                         <InArgument x:TypeArguments="x:String" x:Key="in_strEmailSubject">[in_Config("InputEmailSubject").ToString]</InArgument>
                         <InArgument x:TypeArguments="x:Int32" x:Key="in_intRetryCount">[CInt(in_Config("NoOfRetries").ToString)]</InArgument>
                         <InArgument x:TypeArguments="x:String" x:Key="in_strEmailID">[in_Config("InputEmailSender").ToString]</InArgument>
                         <InArgument x:TypeArguments="x:String" x:Key="in_strInputFolderPath">[in_Config("InputDownloanPath").ToString]</InArgument>
                         <InArgument x:TypeArguments="x:String" x:Key="in_strValidFileExtensions">[in_Config("ValidInputFileExtensions").ToString]</InArgument>
+                        <InArgument x:TypeArguments="x:Int32" x:Key="in_intEmailsToLoop">[CInt(in_Config("LimitEmailsTo").ToString)]</InArgument>
                       </ui:InvokeWorkflowFile.Arguments>
                     </ui:InvokeWorkflowFile>
-                    <Sequence x:Key="SHAREPOINT" sap:VirtualizedContainerService.HintSize="484,855.3333333333334" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                    <Sequence x:Key="SHAREPOINT" sap:VirtualizedContainerService.HintSize="483.2,850.4" sap2010:WorkflowViewState.IdRef="Sequence_6">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="InvokeWorkflowFile - Download" sap:VirtualizedContainerService.HintSize="450,177.33333333333334" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Utilities\SharepointOperations.xaml">
+                      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="InvokeWorkflowFile - Download" sap:VirtualizedContainerService.HintSize="449.6,176" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Utilities\SharepointOperations.xaml">
                         <ui:InvokeWorkflowFile.Arguments>
                           <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
                           <InArgument x:TypeArguments="x:String" x:Key="in_ConfigFileFullPath">[in_ConfigFullPath]</InArgument>
@@ -168,15 +169,15 @@
                           <OutArgument x:TypeArguments="x:String" x:Key="out_FileOrFolderURL">[sharepointFileURL]</OutArgument>
                         </ui:InvokeWorkflowFile.Arguments>
                       </ui:InvokeWorkflowFile>
-                      <If Condition="[Not String.IsNullOrEmpty(sharepointFileURL)]" DisplayName="If -file downloaded" sap:VirtualizedContainerService.HintSize="450,618" sap2010:WorkflowViewState.IdRef="If_1">
+                      <If Condition="[Not String.IsNullOrEmpty(sharepointFileURL)]" DisplayName="If -file downloaded" sap:VirtualizedContainerService.HintSize="449.6,614.4" sap2010:WorkflowViewState.IdRef="If_1">
                         <If.Then>
-                          <Sequence DisplayName="Then - Move" sap:VirtualizedContainerService.HintSize="416,228" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                          <Sequence DisplayName="Then - Move" sap:VirtualizedContainerService.HintSize="416,227.2" sap2010:WorkflowViewState.IdRef="Sequence_7">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
-                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="InvokeWorkflowFile - Move" sap:VirtualizedContainerService.HintSize="382,168" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="Utilities\SharepointOperations.xaml">
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="InvokeWorkflowFile - Move" sap:VirtualizedContainerService.HintSize="382.4,167.2" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="Utilities\SharepointOperations.xaml">
                               <ui:InvokeWorkflowFile.Arguments>
                                 <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
                                 <InArgument x:TypeArguments="x:String" x:Key="in_ConfigFileFullPath">[in_ConfigFullPath]</InArgument>
@@ -190,18 +191,18 @@
                           </Sequence>
                         </If.Then>
                         <If.Else>
-                          <Sequence DisplayName="Else - don't move" sap:VirtualizedContainerService.HintSize="416,227.33333333333334" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                          <Sequence DisplayName="Else - don't move" sap:VirtualizedContainerService.HintSize="416,225.6" sap2010:WorkflowViewState.IdRef="Sequence_8">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
-                            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="382,167.33333333333334" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;No file downloaded from SharePoint, skipping move file.&quot;]" />
+                            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="382.4,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Fatal" Message="[&quot;No file downloaded from SharePoint, skipping move file.&quot;]" />
                           </Sequence>
                         </If.Else>
                       </If>
                     </Sequence>
-                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="LOCALPATH" sap:VirtualizedContainerService.HintSize="456.6666666666667,89.33333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Utilities\GetInputFromLocalPath.xaml">
+                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="LOCALPATH" sap:VirtualizedContainerService.HintSize="484,86.4" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Utilities\GetInputFromLocalPath.xaml">
                       <ui:InvokeWorkflowFile.Arguments>
                         <OutArgument x:TypeArguments="s:String[]" x:Key="out_filePaths" />
                         <InArgument x:TypeArguments="x:String" x:Key="in_strBotInputFolderPath">[in_Config("InputDownloanPath").ToString]</InArgument>
@@ -209,7 +210,7 @@
                         <InArgument x:TypeArguments="x:String" x:Key="in_strFileFormatFilter">[in_Config("ValidInputFileExtensions").ToString]</InArgument>
                       </ui:InvokeWorkflowFile.Arguments>
                     </ui:InvokeWorkflowFile>
-                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="API" sap:VirtualizedContainerService.HintSize="484,89.33333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="Utilities\GetInputFromAPI.xaml">
+                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="API" sap:VirtualizedContainerService.HintSize="484,86.4" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="Utilities\GetInputFromAPI.xaml">
                       <ui:InvokeWorkflowFile.Arguments>
                         <InArgument x:TypeArguments="x:String" x:Key="in_strRequestURL">[in_Config("APIEndpointURL").ToString]</InArgument>
                         <InArgument x:TypeArguments="x:String" x:Key="in_Credentials">[in_Config("APICredentialsAsset").ToString]</InArgument>
@@ -224,9 +225,9 @@
               </ActivityAction>
             </ui:ForEach.Body>
           </ui:ForEach>
-          <TryCatch DisplayName="Try Catch - downloaded input files" sap:VirtualizedContainerService.HintSize="592,368" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+          <TryCatch DisplayName="Try Catch - downloaded input files" sap:VirtualizedContainerService.HintSize="564,219.2" sap2010:WorkflowViewState.IdRef="TryCatch_2">
             <TryCatch.Try>
-              <ui:MultipleAssign DisplayName="Multiple Assign - get dowmloaded input files" sap:VirtualizedContainerService.HintSize="478.6666666666667,117.33333333333333" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
+              <ui:MultipleAssign DisplayName="Multiple Assign - get dowmloaded input files" sap:VirtualizedContainerService.HintSize="478.4,117.6" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
                 <ui:MultipleAssign.AssignOperations>
                   <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
                     <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
@@ -242,10 +243,10 @@
               </ui:MultipleAssign>
             </TryCatch.Try>
             <TryCatch.Catches>
-              <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,164" sap2010:WorkflowViewState.IdRef="Catch`1_2">
+              <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,23.2" sap2010:WorkflowViewState.IdRef="Catch`1_2">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
@@ -253,12 +254,12 @@
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                   </ActivityAction.Argument>
-                  <Throw DisplayName="Throw - BRE" Exception="[New BusinessRuleException(&quot;No valid input files found for processing&quot;)]" sap:VirtualizedContainerService.HintSize="394,92" sap2010:WorkflowViewState.IdRef="Throw_1" />
+                  <Throw DisplayName="Throw - BRE" Exception="[New BusinessRuleException(&quot;No valid input files found for processing&quot;)]" sap:VirtualizedContainerService.HintSize="393.6,90.4" sap2010:WorkflowViewState.IdRef="Throw_1" />
                 </ActivityAction>
               </Catch>
             </TryCatch.Catches>
           </TryCatch>
-          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="592,167.33333333333334" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Valid input files found: &quot;+out_inputFilesList.Count.ToString]" />
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="564,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Valid input files found: &quot;+out_inputFilesList.Count.ToString]" />
         </Sequence>
       </TryCatch.Try>
       <TryCatch.Catches>

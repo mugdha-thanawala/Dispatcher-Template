@@ -173,7 +173,7 @@
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <umam:ForEachEmailConnections ConnectionAccountName="{x:Null}" FolderIdBackup="{x:Reference __ReferenceID1}" FreeTextFilter="{x:Null}" Mailbox="{x:Null}" ManualEntryFolder="{x:Null}" QueryFilter="{x:Null}" AuthScopesInvalid="False" BodyAsHtml="False" BrowserFolder="Inbox" BrowserFolderId="Inbox" ConnectionId="117581b5-2d75-49e5-998d-47eb9d0ff4f4" CurrentItemVariableName="CurrentEmail" DisplayName="For Each Email" FilterSelectionMode="ConditionBuilder" sap:VirtualizedContainerService.HintSize="449.6,769.6" sap2010:WorkflowViewState.IdRef="ForEachEmailConnections_1" Importance="Any" IncludeSubfolders="False" Length="[intEmailsFound]" MarkAsRead="True" MaxResults="[in_intEmailsToLoop]" OrderByDate="NewestFirst" SelectionMode="Browse" UnreadOnly="True" UseConnectionService="True" UseSharedMailbox="False" WithAttachmentsOnly="True">
+                  <umam:ForEachEmailConnections ConnectionAccountName="{x:Null}" FolderIdBackup="{x:Reference __ReferenceID1}" FreeTextFilter="{x:Null}" Mailbox="{x:Null}" ManualEntryFolder="{x:Null}" QueryFilter="{x:Null}" AuthScopesInvalid="False" BodyAsHtml="False" BrowserFolder="Inbox" BrowserFolderId="AAMkADIyYjU3ZTgxLWIzZGEtNDhmYy1hMTljLThkZWU4ZDE0ODI1YQAuAAAAAADHzTp_1q70Q66OCC_mQxIDAQASq6xRj-DKSr_0U3bfopJCAAAAAAEMAAA=" ConnectionId="117581b5-2d75-49e5-998d-47eb9d0ff4f4" CurrentItemVariableName="CurrentEmail" DisplayName="For Each Email" FilterSelectionMode="ConditionBuilder" sap:VirtualizedContainerService.HintSize="449.6,769.6" sap2010:WorkflowViewState.IdRef="ForEachEmailConnections_1" Importance="Any" IncludeSubfolders="False" Length="[intEmailsFound]" MarkAsRead="True" MaxResults="[in_intEmailsToLoop]" OrderByDate="NewestFirst" SelectionMode="Browse" UnreadOnly="True" UseConnectionService="True" UseSharedMailbox="False" WithAttachmentsOnly="True">
                     <umam:ForEachEmailConnections.Body>
                       <ActivityAction x:TypeArguments="umm:Office365Message, x:Int32">
                         <ActivityAction.Argument1>
@@ -209,7 +209,7 @@
                       </usau:BackupSlot>
                     </umam:ForEachEmailConnections.FilterSelectionBackup>
                     <umam:ForEachEmailConnections.MailFolderArgument>
-                      <umamm:MailFolderArgument ConnectionDescriptor="{x:Null}" ManualEntryFolder="{x:Null}" BrowserFolder="Inbox" BrowserFolderId="Inbox" ConnectionKey="117581b5-2d75-49e5-998d-47eb9d0ff4f4" SelectionMode="Browse">
+                      <umamm:MailFolderArgument ConnectionDescriptor="{x:Null}" ManualEntryFolder="{x:Null}" BrowserFolder="Inbox" BrowserFolderId="AAMkADIyYjU3ZTgxLWIzZGEtNDhmYy1hMTljLThkZWU4ZDE0ODI1YQAuAAAAAADHzTp_1q70Q66OCC_mQxIDAQASq6xRj-DKSr_0U3bfopJCAAAAAAEMAAA=" ConnectionKey="117581b5-2d75-49e5-998d-47eb9d0ff4f4" SelectionMode="Browse">
                         <umamm:MailFolderArgument.Backup>
                           <usau:BackupSlot x:TypeArguments="umame:ItemSelectionMode" x:Name="__ReferenceID1" StoredValue="Browse">
                             <usau:BackupSlot.BackupValues>
