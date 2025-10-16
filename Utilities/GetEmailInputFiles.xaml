@@ -1,11 +1,15 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="GetEmailInputFiles" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:umam="clr-namespace:UiPath.MicrosoftOffice365.Activities.Mail;assembly=UiPath.MicrosoftOffice365.Activities" xmlns:umame="clr-namespace:UiPath.MicrosoftOffice365.Activities.Mail.Enums;assembly=UiPath.MicrosoftOffice365.Activities" xmlns:umamf="clr-namespace:UiPath.MicrosoftOffice365.Activities.Mail.Filters;assembly=UiPath.MicrosoftOffice365.Activities" xmlns:umamm="clr-namespace:UiPath.MicrosoftOffice365.Activities.Mail.Models;assembly=UiPath.MicrosoftOffice365.Activities" xmlns:umm="clr-namespace:UiPath.MicrosoftOffice365.Models;assembly=UiPath.MicrosoftOffice365" xmlns:usau="clr-namespace:UiPath.Shared.Activities.Utils;assembly=UiPath.MicrosoftOffice365.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="GetEmailInputFiles" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:umam="clr-namespace:UiPath.MicrosoftOffice365.Activities.Mail;assembly=UiPath.MicrosoftOffice365.Activities" xmlns:umame="clr-namespace:UiPath.MicrosoftOffice365.Activities.Mail.Enums;assembly=UiPath.MicrosoftOffice365.Activities" xmlns:umamf="clr-namespace:UiPath.MicrosoftOffice365.Activities.Mail.Filters;assembly=UiPath.MicrosoftOffice365.Activities" xmlns:umamm="clr-namespace:UiPath.MicrosoftOffice365.Activities.Mail.Models;assembly=UiPath.MicrosoftOffice365.Activities" xmlns:umm="clr-namespace:UiPath.MicrosoftOffice365.Models;assembly=UiPath.MicrosoftOffice365" xmlns:usau="clr-namespace:UiPath.Shared.Activities.Utils;assembly=UiPath.MicrosoftOffice365.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_strEmailSubject" Type="InArgument(x:String)" />
     <x:Property Name="in_intRetryCount" Type="InArgument(x:Int32)" />
     <x:Property Name="in_strEmailID" Type="InArgument(x:String)" />
     <x:Property Name="in_strInputFolderPath" Type="InArgument(x:String)" />
     <x:Property Name="in_strValidFileExtensions" Type="InArgument(x:String)" />
+    <x:Property Name="in_intEmailsToLoop" Type="InArgument(x:Int32)" />
   </x:Members>
+  <this:GetEmailInputFiles.in_intEmailsToLoop>
+    <InArgument x:TypeArguments="x:Int32" />
+  </this:GetEmailInputFiles.in_intEmailsToLoop>
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
@@ -140,15 +144,15 @@
       <AssemblyReference>UiPath.Workflow</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="GetTMSInputFiles" sap:VirtualizedContainerService.HintSize="915.9999999999999,2556" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="GetTMSInputFiles" sap:VirtualizedContainerService.HintSize="1129.6000000000001,2534.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <TryCatch DisplayName="Try Catch - GetEmailInputFiles" sap:VirtualizedContainerService.HintSize="590.6666666666666,2533.3333333333335" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch DisplayName="Try Catch - GetEmailInputFiles" sap:VirtualizedContainerService.HintSize="590.4,2511.2" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <TryCatch.Try>
-        <Sequence sap2010:Annotation.AnnotationText="This workflow extracts emails with the given subjects and saves the attachments" DisplayName="GetEmailInputFiles" sap:VirtualizedContainerService.HintSize="552,2248" sap2010:WorkflowViewState.IdRef="Sequence_2">
+        <Sequence sap2010:Annotation.AnnotationText="This workflow extracts emails with the given subjects and saves the attachments" DisplayName="GetEmailInputFiles" sap:VirtualizedContainerService.HintSize="553.6,2233.6" sap2010:WorkflowViewState.IdRef="Sequence_2">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -156,11 +160,11 @@
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:LogMessage DisplayName="Log Message - Start Flow: GetEmailInputFiles" sap:VirtualizedContainerService.HintSize="518,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Start Flow: GetEmailInputFiles&quot;]" />
-          <ui:RetryScope LogRetriedExceptions="{x:Null}" RetriedExceptionsLogLevel="{x:Null}" DisplayName="Retry Scope" sap:VirtualizedContainerService.HintSize="518,1813.3333333333333" sap2010:WorkflowViewState.IdRef="RetryScope_2" NumberOfRetries="[in_intRetryCount]">
+          <ui:LogMessage DisplayName="Log Message - Start Flow: GetEmailInputFiles" sap:VirtualizedContainerService.HintSize="518.4,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Start Flow: GetEmailInputFiles&quot;]" />
+          <ui:RetryScope LogRetriedExceptions="{x:Null}" RetriedExceptionsLogLevel="{x:Null}" DisplayName="Retry Scope" sap:VirtualizedContainerService.HintSize="518.4,1800.8" sap2010:WorkflowViewState.IdRef="RetryScope_2" NumberOfRetries="[in_intRetryCount]">
             <ui:RetryScope.ActivityBody>
               <ActivityAction>
-                <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="484,1580" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="483.2,1568" sap2010:WorkflowViewState.IdRef="Sequence_10">
                   <Sequence.Variables>
                     <Variable x:TypeArguments="x:Int32" Name="intEmailsFound" />
                   </Sequence.Variables>
@@ -169,7 +173,7 @@
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <umam:ForEachEmailConnections ConnectionAccountName="{x:Null}" FolderIdBackup="{x:Reference __ReferenceID1}" FreeTextFilter="{x:Null}" Mailbox="{x:Null}" ManualEntryFolder="{x:Null}" QueryFilter="{x:Null}" AuthScopesInvalid="False" BodyAsHtml="False" BrowserFolder="Inbox" BrowserFolderId="Inbox" ConnectionId="117581b5-2d75-49e5-998d-47eb9d0ff4f4" CurrentItemVariableName="CurrentEmail" DisplayName="For Each Email" FilterSelectionMode="ConditionBuilder" sap:VirtualizedContainerService.HintSize="450,778.6666666666666" sap2010:WorkflowViewState.IdRef="ForEachEmailConnections_1" Importance="Any" IncludeSubfolders="False" Length="[intEmailsFound]" MarkAsRead="True" MaxResults="100" OrderByDate="NewestFirst" SelectionMode="Browse" UnreadOnly="True" UseConnectionService="True" UseSharedMailbox="False" WithAttachmentsOnly="True">
+                  <umam:ForEachEmailConnections ConnectionAccountName="{x:Null}" FolderIdBackup="{x:Reference __ReferenceID1}" FreeTextFilter="{x:Null}" Mailbox="{x:Null}" ManualEntryFolder="{x:Null}" QueryFilter="{x:Null}" AuthScopesInvalid="False" BodyAsHtml="False" BrowserFolder="Inbox" BrowserFolderId="Inbox" ConnectionId="117581b5-2d75-49e5-998d-47eb9d0ff4f4" CurrentItemVariableName="CurrentEmail" DisplayName="For Each Email" FilterSelectionMode="ConditionBuilder" sap:VirtualizedContainerService.HintSize="449.6,769.6" sap2010:WorkflowViewState.IdRef="ForEachEmailConnections_1" Importance="Any" IncludeSubfolders="False" Length="[intEmailsFound]" MarkAsRead="True" MaxResults="[in_intEmailsToLoop]" OrderByDate="NewestFirst" SelectionMode="Browse" UnreadOnly="True" UseConnectionService="True" UseSharedMailbox="False" WithAttachmentsOnly="True">
                     <umam:ForEachEmailConnections.Body>
                       <ActivityAction x:TypeArguments="umm:Office365Message, x:Int32">
                         <ActivityAction.Argument1>
@@ -178,14 +182,14 @@
                         <ActivityAction.Argument2>
                           <DelegateInArgument x:TypeArguments="x:Int32" Name="CurrentEmailIndex" />
                         </ActivityAction.Argument2>
-                        <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="416,466.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                        <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="416,462.4" sap2010:WorkflowViewState.IdRef="Sequence_17">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <umam:DownloadEmailAttachments ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" Filter="{x:Null}" NewResult="{x:Null}" Result="{x:Null}" AuthScopesInvalid="False" ConflictResolution="[UiPath.MicrosoftOffice365.Enums.ConflictBehavior.Replace]" ConnectionId="117581b5-2d75-49e5-998d-47eb9d0ff4f4" DestinationPath="[in_strInputFolderPath]" DisplayName="Download Email Attachments" Email="[CurrentEmail]" ExcludeInlineAttachments="False" FilterByFileNames="[in_strValidFileExtensions]" sap:VirtualizedContainerService.HintSize="382,239.33333333333334" sap2010:WorkflowViewState.IdRef="DownloadEmailAttachments_2" SearchMode="UseSimple" UseConnectionService="True" />
-                          <ui:LogMessage DisplayName="Log Message - Input Email Attachments saved" sap:VirtualizedContainerService.HintSize="382,167.33333333333334" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Info" Message="[&quot;Input Email Attachments saved at: &quot;+in_strInputFolderPath]" />
+                          <umam:DownloadEmailAttachments ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" Filter="{x:Null}" NewResult="{x:Null}" Result="{x:Null}" AuthScopesInvalid="False" ConflictResolution="[UiPath.MicrosoftOffice365.Enums.ConflictBehavior.Replace]" ConnectionId="117581b5-2d75-49e5-998d-47eb9d0ff4f4" DestinationPath="[in_strInputFolderPath]" DisplayName="Download Email Attachments" Email="[CurrentEmail]" ExcludeInlineAttachments="False" FilterByFileNames="[in_strValidFileExtensions]" sap:VirtualizedContainerService.HintSize="382.4,236.8" sap2010:WorkflowViewState.IdRef="DownloadEmailAttachments_2" SearchMode="UseSimple" UseConnectionService="True" />
+                          <ui:LogMessage DisplayName="Log Message - Input Email Attachments saved" sap:VirtualizedContainerService.HintSize="382.4,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Info" Message="[&quot;Input Email Attachments saved at: &quot;+in_strInputFolderPath]" />
                         </Sequence>
                       </ActivityAction>
                     </umam:ForEachEmailConnections.Body>
@@ -232,15 +236,15 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                   </umam:ForEachEmailConnections>
-                  <If Condition="[intEmailsFound&gt;0]" sap:VirtualizedContainerService.HintSize="450,741.3333333333334" sap2010:WorkflowViewState.IdRef="If_1">
+                  <If Condition="[intEmailsFound&gt;0]" sap:VirtualizedContainerService.HintSize="449.6,738.4" sap2010:WorkflowViewState.IdRef="If_1">
                     <If.Then>
-                      <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,227.33333333333334" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                      <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,225.6" sap2010:WorkflowViewState.IdRef="Sequence_14">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <ui:LogMessage DisplayName="Log Message - Emails Processed" sap:VirtualizedContainerService.HintSize="382,167.33333333333334" sap2010:WorkflowViewState.IdRef="LogMessage_13" Level="Info" Message="[&quot;Emails Processed: &quot;+intEmailsFound.ToString]" />
+                        <ui:LogMessage DisplayName="Log Message - Emails Processed" sap:VirtualizedContainerService.HintSize="382.4,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_13" Level="Info" Message="[&quot;Emails Processed: &quot;+intEmailsFound.ToString]" />
                       </Sequence>
                     </If.Then>
                     <If.Else>
