@@ -211,7 +211,7 @@
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <av:Point x:Key="ShapeLocation">465,125</av:Point>
                               <av:Size x:Key="ShapeSize">110.4,70.4</av:Size>
-                              <av:PointCollection x:Key="ConnectorLocation">575.4,160.2 615,160.2</av:PointCollection>
+                              <av:PointCollection x:Key="ConnectorLocation">575.4,160.2 625,160.2</av:PointCollection>
                               <av:Point x:Key="AnnotationLocation">420,30</av:Point>
                               <av:Size x:Key="AnnotationSize">160,60</av:Size>
                             </scg:Dictionary>
@@ -230,100 +230,102 @@
                             </sap:WorkflowViewStateService.ViewState>
                           </ui:InvokeWorkflowFile>
                           <FlowStep.Next>
-                            <FlowStep x:Name="__ReferenceID6">
+                            <FlowStep x:Name="__ReferenceID2" sap2010:WorkflowViewState.IdRef="FlowStep_1">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                  <av:Point x:Key="ShapeLocation">615,125</av:Point>
+                                  <av:Point x:Key="ShapeLocation">625,125</av:Point>
                                   <av:Size x:Key="ShapeSize">110.4,70.4</av:Size>
-                                  <av:PointCollection x:Key="ConnectorLocation">725.4,160.2 795,160.2</av:PointCollection>
+                                  <av:Point x:Key="AnnotationLocation">595,40</av:Point>
+                                  <av:Size x:Key="AnnotationSize">150,60</av:Size>
+                                  <av:PointCollection x:Key="ConnectorLocation">735.4,160.2 785,160.2</av:PointCollection>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
-                              <Sequence DisplayName="Encrypt input files" sap:VirtualizedContainerService.HintSize="579.2,937.6" sap2010:WorkflowViewState.IdRef="Sequence_5">
-                                <Sequence.Variables>
-                                  <Variable x:TypeArguments="s:String[]" Name="arrInputFiles" />
-                                  <Variable x:TypeArguments="x:Boolean" Name="bool_EncryptDecryptFiles" />
-                                </Sequence.Variables>
+                              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Read input files one by one and add to queue, track status in report" DisplayName="ProcessReadInputFiles" sap:VirtualizedContainerService.HintSize="110.4,70.4" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_14" UnSafe="False" WorkflowFileName="Framework\ProcessReadInputFiles.xaml">
+                                <ui:InvokeWorkflowFile.Arguments>
+                                  <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[Config]</InArgument>
+                                  <InArgument x:TypeArguments="s:String[]" x:Key="in_InputFilesArr">[inputFilesArr]</InArgument>
+                                  <OutArgument x:TypeArguments="x:String" x:Key="out_OutputFileFullPath">[outputFileFullPath]</OutArgument>
+                                </ui:InvokeWorkflowFile.Arguments>
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
-                                <Assign sap:VirtualizedContainerService.HintSize="545.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_1">
-                                  <Assign.To>
-                                    <OutArgument x:TypeArguments="x:Boolean">[bool_EncryptDecryptFiles]</OutArgument>
-                                  </Assign.To>
-                                  <Assign.Value>
-                                    <InArgument x:TypeArguments="x:Boolean">False</InArgument>
-                                  </Assign.Value>
-                                </Assign>
-                                <If Condition="[bool_EncryptDecryptFiles = True]" sap:VirtualizedContainerService.HintSize="545.6,764" sap2010:WorkflowViewState.IdRef="If_1">
-                                  <If.Then>
-                                    <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="512,376.8" sap2010:WorkflowViewState.IdRef="Sequence_6">
-                                      <sap:WorkflowViewStateService.ViewState>
-                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                        </scg:Dictionary>
-                                      </sap:WorkflowViewStateService.ViewState>
-                                      <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="478.4,149.6" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
-                                        <ui:MultipleAssign.AssignOperations>
-                                          <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
-                                            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
-                                              <ui:AssignOperation.To>
-                                                <OutArgument x:TypeArguments="s:String[]">[arrInputFiles]</OutArgument>
-                                              </ui:AssignOperation.To>
-                                              <ui:AssignOperation.Value>
-                                                <InArgument x:TypeArguments="s:String[]">[Directory.GetFiles(Config("InputDownloanPath").ToString)]</InArgument>
-                                              </ui:AssignOperation.Value>
-                                            </ui:AssignOperation>
-                                          </scg:List>
-                                        </ui:MultipleAssign.AssignOperations>
-                                      </ui:MultipleAssign>
-                                      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="EncryptDecryptFiles - Invoke Workflow File (Utilities\EncryptDecryptFiles.xaml)" sap:VirtualizedContainerService.HintSize="478.4,167.2" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_18" UnSafe="False" WorkflowFileName="Utilities\EncryptDecryptFiles.xaml">
-                                        <ui:InvokeWorkflowFile.Arguments>
-                                          <InArgument x:TypeArguments="s:String[]" x:Key="in_FilesToEncrypt" />
-                                          <InArgument x:TypeArguments="x:String" x:Key="in_strOrchFolderPath" />
-                                          <InArgument x:TypeArguments="x:String" x:Key="in_strKey" />
-                                          <InArgument x:TypeArguments="s:String[]" x:Key="in_strFilesToDecrypt" />
-                                        </ui:InvokeWorkflowFile.Arguments>
-                                      </ui:InvokeWorkflowFile>
-                                    </Sequence>
-                                  </If.Then>
-                                  <If.Else>
-                                    <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="512,225.6" sap2010:WorkflowViewState.IdRef="Sequence_7">
-                                      <sap:WorkflowViewStateService.ViewState>
-                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                        </scg:Dictionary>
-                                      </sap:WorkflowViewStateService.ViewState>
-                                      <ui:LogMessage DisplayName="Log Message - Encrypt/Decrypt Functionality set to False" sap:VirtualizedContainerService.HintSize="382.4,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Encrypt/Decrypt Functionality set to False&quot;]" />
-                                    </Sequence>
-                                  </If.Else>
-                                </If>
-                              </Sequence>
+                              </ui:InvokeWorkflowFile>
                               <FlowStep.Next>
-                                <FlowStep x:Name="__ReferenceID2" sap2010:WorkflowViewState.IdRef="FlowStep_1">
+                                <FlowStep x:Name="__ReferenceID6" sap2010:WorkflowViewState.IdRef="FlowStep_2">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <av:Point x:Key="ShapeLocation">795,125</av:Point>
+                                      <av:Point x:Key="ShapeLocation">785,125</av:Point>
                                       <av:Size x:Key="ShapeSize">110.4,70.4</av:Size>
-                                      <av:Point x:Key="AnnotationLocation">685,0</av:Point>
-                                      <av:Size x:Key="AnnotationSize">150,60</av:Size>
-                                      <av:PointCollection x:Key="ConnectorLocation">905.4,160.2 955,160.2</av:PointCollection>
+                                      <av:PointCollection x:Key="ConnectorLocation">895.4,160.2 955,160.2</av:PointCollection>
+                                      <av:Point x:Key="AnnotationLocation">770,60</av:Point>
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
-                                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Read input files one by one and add to queue, track status in report" DisplayName="ProcessReadInputFiles" sap:VirtualizedContainerService.HintSize="110.4,70.4" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_14" UnSafe="False" WorkflowFileName="Framework\ProcessReadInputFiles.xaml">
-                                    <ui:InvokeWorkflowFile.Arguments>
-                                      <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[Config]</InArgument>
-                                      <InArgument x:TypeArguments="s:String[]" x:Key="in_InputFilesArr">[inputFilesArr]</InArgument>
-                                      <OutArgument x:TypeArguments="x:String" x:Key="out_OutputFileFullPath">[outputFileFullPath]</OutArgument>
-                                    </ui:InvokeWorkflowFile.Arguments>
+                                  <Sequence sap2010:Annotation.AnnotationText="Encrypt/ Decrypt Files as required" DisplayName="Encrypt input files" sap:VirtualizedContainerService.HintSize="110.4,70.4" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                                    <Sequence.Variables>
+                                      <Variable x:TypeArguments="s:String[]" Name="arrInputFiles" />
+                                      <Variable x:TypeArguments="x:Boolean" Name="bool_EncryptDecryptFiles" />
+                                    </Sequence.Variables>
                                     <sap:WorkflowViewStateService.ViewState>
                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                                       </scg:Dictionary>
                                     </sap:WorkflowViewStateService.ViewState>
-                                  </ui:InvokeWorkflowFile>
+                                    <Assign sap:VirtualizedContainerService.HintSize="545.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_1">
+                                      <Assign.To>
+                                        <OutArgument x:TypeArguments="x:Boolean">[bool_EncryptDecryptFiles]</OutArgument>
+                                      </Assign.To>
+                                      <Assign.Value>
+                                        <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                                      </Assign.Value>
+                                    </Assign>
+                                    <If Condition="[bool_EncryptDecryptFiles = True]" sap:VirtualizedContainerService.HintSize="545.6,764" sap2010:WorkflowViewState.IdRef="If_1">
+                                      <If.Then>
+                                        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="512,376.8" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                          <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="478.4,149.6" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+                                            <ui:MultipleAssign.AssignOperations>
+                                              <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                                                <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
+                                                  <ui:AssignOperation.To>
+                                                    <OutArgument x:TypeArguments="s:String[]">[arrInputFiles]</OutArgument>
+                                                  </ui:AssignOperation.To>
+                                                  <ui:AssignOperation.Value>
+                                                    <InArgument x:TypeArguments="s:String[]">[Directory.GetFiles(Config("InputDownloanPath").ToString)]</InArgument>
+                                                  </ui:AssignOperation.Value>
+                                                </ui:AssignOperation>
+                                              </scg:List>
+                                            </ui:MultipleAssign.AssignOperations>
+                                          </ui:MultipleAssign>
+                                          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="EncryptDecryptFiles - Invoke Workflow File (Utilities\EncryptDecryptFiles.xaml)" sap:VirtualizedContainerService.HintSize="478.4,167.2" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_18" UnSafe="False" WorkflowFileName="Utilities\EncryptDecryptFiles.xaml">
+                                            <ui:InvokeWorkflowFile.Arguments>
+                                              <InArgument x:TypeArguments="s:String[]" x:Key="in_FilesToEncrypt" />
+                                              <InArgument x:TypeArguments="x:String" x:Key="in_strOrchFolderPath" />
+                                              <InArgument x:TypeArguments="x:String" x:Key="in_strKey" />
+                                              <InArgument x:TypeArguments="s:String[]" x:Key="in_strFilesToDecrypt" />
+                                            </ui:InvokeWorkflowFile.Arguments>
+                                          </ui:InvokeWorkflowFile>
+                                        </Sequence>
+                                      </If.Then>
+                                      <If.Else>
+                                        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="512,225.6" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                          <ui:LogMessage DisplayName="Log Message - Encrypt/Decrypt Functionality set to False" sap:VirtualizedContainerService.HintSize="382.4,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Encrypt/Decrypt Functionality set to False&quot;]" />
+                                        </Sequence>
+                                      </If.Else>
+                                    </If>
+                                  </Sequence>
                                   <FlowStep.Next>
                                     <FlowStep x:Name="__ReferenceID5" sap2010:WorkflowViewState.IdRef="FlowStep_2">
                                       <sap:WorkflowViewStateService.ViewState>
@@ -331,7 +333,7 @@
                                           <av:Point x:Key="ShapeLocation">955,125</av:Point>
                                           <av:Size x:Key="ShapeSize">110.4,70.4</av:Size>
                                           <av:PointCollection x:Key="ConnectorLocation">1065.4,160.2 1095,160.2</av:PointCollection>
-                                          <av:Point x:Key="AnnotationLocation">885,5</av:Point>
+                                          <av:Point x:Key="AnnotationLocation">895,45</av:Point>
                                           <av:Size x:Key="AnnotationSize">190,50</av:Size>
                                         </scg:Dictionary>
                                       </sap:WorkflowViewStateService.ViewState>
@@ -349,7 +351,7 @@
                                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                               <av:Point x:Key="ShapeLocation">1095,125</av:Point>
                                               <av:Size x:Key="ShapeSize">110.4,70.4</av:Size>
-                                              <av:Point x:Key="AnnotationLocation">1115,15</av:Point>
+                                              <av:Point x:Key="AnnotationLocation">1115,45</av:Point>
                                               <av:Size x:Key="AnnotationSize">190,50</av:Size>
                                             </scg:Dictionary>
                                           </sap:WorkflowViewStateService.ViewState>
@@ -435,7 +437,7 @@
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="ui:BusinessRuleException" Name="exception" />
             </ActivityAction.Argument>
-            <Sequence DisplayName="Handle BRE" sap:VirtualizedContainerService.HintSize="630.4,404.8" sap2010:WorkflowViewState.IdRef="Sequence_3">
+            <Sequence DisplayName="Handle BRE" sap:VirtualizedContainerService.HintSize="630.4,402.4" sap2010:WorkflowViewState.IdRef="Sequence_3">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
